@@ -12,28 +12,48 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/vistas/peliculas", async (req, res) => {
-  const response = await peliculasController.mostrarPeliculas();
-  res.render("peliculas", { title: "Películas", peliculas: response.data || [] });
+  try {
+    const response = await peliculasController.mostrarPeliculas();
+    res.render("peliculas", { title: "Películas", peliculas: response.data || [] });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 });
 
 router.get("/vistas/salas", async (req, res) => {
-  const response = await salasController.mostrarSalas();
-  res.render("salas", { title: "Salas", salas: response.data || [] });
+  try {
+    const response = await salasController.mostrarSalas();
+    res.render("salas", { title: "Salas", salas: response.data || [] });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 });
 
 router.get("/vistas/funciones", async (req, res) => {
-  const response = await funcionesController.mostrarFunciones();
-  res.render("funciones", { title: "Funciones", funciones: response.data || [] });
+  try {
+    const response = await funcionesController.mostrarFunciones();
+    res.render("funciones", { title: "Funciones", funciones: response.data || [] });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 });
 
 router.get("/vistas/tickets", async (req, res) => {
-  const response = await ticketsController.mostrarTickets();
-  res.render("tickets", { title: "Tickets", tickets: response.data || [] });
+  try {
+    const response = await ticketsController.mostrarTickets();
+    res.render("tickets", { title: "Tickets", tickets: response.data || [] });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 });
 
 router.get("/vistas/reservaciones", async (req, res) => {
-  const response = await reservacionesController.mostrarReservaciones();
-  res.render("reservaciones", { title: "Reservaciones", reservaciones: response.data || [] });
+  try {
+    const response = await reservacionesController.mostrarReservaciones();
+    res.render("reservaciones", { title: "Reservaciones", reservaciones: response.data || [] });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 });
 
 export default router;
